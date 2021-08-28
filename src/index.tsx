@@ -28,12 +28,16 @@ const App = () => {
       loader: 'jsx',
       target: 'es2015',
     });
-*/
+    */
     const result = await ref.current.build({
       entryPoints: ['index.js'],
       bundle: true,
       write: false,
       plugins: [unpkgPathPlugin()],
+      define: {
+        'process.env.NODE_ENV': '"production"',
+        global: 'window',
+      },
     });
 
     // console.log(result);
